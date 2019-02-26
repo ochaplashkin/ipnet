@@ -1,0 +1,52 @@
+html {
+  height:100%;
+  width:100%;
+}
+body {
+   background-color:#010220;
+   color:white;
+   height:100%;
+   width:100%;
+   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.main {
+   position:absolute;
+   left:40%;
+   top:40%;
+}
+
+.fields {
+	color:white;
+	border-radius: 5px;
+	border:0px;
+	height:30px;
+	background-color:#2F3148;
+	margin-bottom: 18px;
+}
+#test {
+	border: 2px solid #3E3E71;
+	color:#78B8FF;
+	transition: 0.2s ease-out;
+}
+#test:hover {
+	border: 2px solid #7D7F8C;
+	color:white;
+}
+ 
+a {
+	color:#78B8FF;
+	transition: 0.2s ease-out;
+		
+}
+a:hover{
+	text-decoration: none;
+	color:white;
+}
+#logo {
+	margin-bottom: 10px;
+}
+
+button:focus, input:focus{
+	outline: none;
+}
