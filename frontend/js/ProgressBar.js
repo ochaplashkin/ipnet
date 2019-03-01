@@ -69,7 +69,7 @@ function fakeProgressBar(){
     //up file for serv
     var xhr = new XMLHttpRequest();
 
-    // обработчик для закачки
+    // Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄ Г¤Г«Гї Г§Г ГЄГ Г·ГЄГЁ
     xhr.upload.onprogress = function(event) {
      console.log(event.loaded + ' / ' + event.total);
      line = document.getElementById("line");
@@ -79,12 +79,12 @@ function fakeProgressBar(){
     }
     
     function up() {
-     //Завершение progressbar->Completed
+     //Г‡Г ГўГҐГ°ГёГҐГ­ГЁГҐ progressbar->Completed
      line.style.background = "#48B461";
      line.innerHTML = "Completed";
 
      function close() {
-      //Закрываем 
+      //Г‡Г ГЄГ°Г»ГўГ ГҐГ¬ 
       $('#barProgress').hide();
       $('#load').show();
       line.style.width = 0+"%";
@@ -94,8 +94,8 @@ function fakeProgressBar(){
     }
 
     xhr.onload = xhr.onerror = function() {
-      // обработчики успеха и ошибки
-      // если status == 200, то это успех, иначе ошибка
+      // Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГЁ ГіГ±ГЇГҐГµГ  ГЁ Г®ГёГЁГЎГЄГЁ
+      // ГҐГ±Г«ГЁ status == 200, ГІГ® ГЅГІГ® ГіГ±ГЇГҐГµ, ГЁГ­Г Г·ГҐ Г®ГёГЁГЎГЄГ 
 
      if (this.status == 200) {
       console.log("success");
@@ -107,3 +107,12 @@ function fakeProgressBar(){
     xhr.open("POST", "upload", true);
     xhr.send(file);
   }
+
+  function pauseHide(){
+    $('#example').tooltip("hide")
+  }
+
+$("#example").bind('click', {obj: this}, 
+  function(event){    
+     setTimeout( pauseHide,3000);
+  });
