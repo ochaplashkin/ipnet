@@ -62,3 +62,7 @@ button:focus, input:focus{
   color: rgb(0, 0, 0, .7);
   text-align: left;
 }
+
+#load:hover {
+	color:white;
+}
