@@ -64,3 +64,7 @@ button:focus, input:focus{
 	text-align: left;
 	border: 1px solid #2F3148;
 }
+
+#load:hover {
+	color:white;
+}
