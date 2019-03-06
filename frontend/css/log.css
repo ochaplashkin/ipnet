@@ -50,3 +50,17 @@ a:hover{
 button:focus, input:focus{
 	outline: none;
 }
+
+
+/* Настройка tooltip */
+.bs-tooltip-auto[x-placement^=left] .arrow::before,
+.bs-tooltip-left .arrow::before {
+	border-left-color:rgba(70, 162, 41, 0.4);
+}
+
+.tooltip-inner {
+	background:rgba(70, 162, 41, 0.4);
+	color: white;
+	text-align: left;
+	border: 1px solid #2F3148;
+}
