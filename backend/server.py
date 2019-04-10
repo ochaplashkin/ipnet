@@ -24,4 +24,4 @@ def get_info():
     return str(info.full(ip))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='104.248.94.46', port=5000, debug=True)
