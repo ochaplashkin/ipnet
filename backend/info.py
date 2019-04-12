@@ -42,9 +42,9 @@ def whois(ip='8.8.8.8'):
         response = requests.get(
             '%s?apiKey=%s&domainName=%s&outputFormat=JSON' % (URL_WHOIS, TOKEN_WHOIS, ip))
         r = response.json()
-        return r['WhoisRecord']
+        return json.dumps(r['WhoisRecord'], ensure_ascii=False)
     else:
-        return 'balance=0'
+        return json.dumps('balance=0', ensure_ascii=False)
 
 
 def geolocation(ip='8.8.8.8'):
@@ -68,7 +68,7 @@ API of ipinfo.io return gelocation data
     r['loc'] = {}
     r['loc']['latitude']  = geo[0]
     r['loc']['longitude'] = geo[1]
-    return r
+    return json.dumps(r, ensure_ascii=False)
 
 
 def full(ip='8.8.8.8'):
@@ -84,7 +84,7 @@ Collects full information about the ip
     res = {}
     res['whois'] = whois(ip)
     res['geo']   = geolocation(ip)
-    return res
+    return json.dumps(res, ensure_ascii=False)
 
 
 def main():
