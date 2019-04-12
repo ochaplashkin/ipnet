@@ -8,17 +8,17 @@ _author_ = "ochaplashkin"
 app = Flask(__name__)
 
 
-@app.route("/whois", methods=['GET'])
+@app.route("/whois")
 def get_whois():
     ip = request.args.get('ip', default="8.8.8.8", type=str)
     return str(info.whois(ip))
 
-@app.route("/geo", methods=['GET'])
+@app.route("/geo")
 def get_geo():
     ip = request.args.get('ip', default="8.8.8.8", type=str)
     return str(info.geolocation(ip))
 
-@app.route("/", methods=['GET'])
+@app.route("/")
 def get_info():
     ip = request.args.get('ip', default="8.8.8.8", type=str)
     return str(info.full(ip))
