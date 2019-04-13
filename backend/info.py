@@ -18,9 +18,8 @@ URL_IPINFO   = 'https://ipinfo.io/'
 Data for whois service
 '''
 TOKEN_WHOIS = 'at_6lVSjRTxwIHYVADBAnW8dT03Yvana'
-URL_WHOIS   = 'https://www.whoisxmlapi.com/whoisserver/WhoisService'
-
-# https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_6lVSjRTxwIHYVADBAnW8dT03Yvana&domainName=google.com
+TOKEN_WHOIS_RESERVE = 'at_A7teft1bgqgi0siL8X5afgRLcxWCg'
+URL_WHOIS = 'https://www.whoisxmlapi.com/whoisserver/WhoisService'
 
 
 def whois(ip='8.8.8.8'):
@@ -36,32 +35,36 @@ def whois(ip='8.8.8.8'):
     :rtype: dict of strings
     '''
     response_balance = requests.get(
-        'https://www.whoisxmlapi.com/accountServices.php?servicetype=accountbalance&apiKey=at_6lVSjRTxwIHYVADBAnW8dT03Yvana&output_format=JSON')
+        'https://www.whoisxmlapi.com/accountServices.php?servicetype=accountbalance&apiKey=%s&output_format=JSON' % TOKEN_WHOIS)
     balance = response_balance.json()
     if balance['balance'] > 0:
-        response = requests.get(
-            '%s?apiKey=%s&domainName=%s&outputFormat=JSON' % (URL_WHOIS, TOKEN_WHOIS, ip))
-        r = response.json()
-        return json.dumps(r['WhoisRecord'], ensure_ascii=False)
+        r = requests.get(
+            '%s?apiKey=%s&domainName=%s&outputFormat=JSON' % (URL_WHOIS, TOKEN_WHOIS, ip)).json()
     else:
-        return json.dumps('balance=0', ensure_ascii=False)
+        r = requests.get(
+            '%s?apiKey=%s&domainName=%s&outputFormat=JSON' % (URL_WHOIS, TOKEN_WHOIS_RESERVE, ip)).json()
+    important_fields = ['createdDate','updatedDate','registrant','administrativeContact','domainName','registrarName','registrarIANAID']
+    fields_for_delete = []
+    for i in r['WhoisRecord']:
+        if not (i in important_fields):
+            fields_for_delete.append(i)
+    for i in fields_for_delete:
+        r['WhoisRecord'].pop(i,None)
+
+    return json.dumps(r['WhoisRecord'], ensure_ascii=False)
 
 
 def geolocation(ip='8.8.8.8'):
     '''
-Makes a request to the ipinfo.io with token of _author_
-API of ipinfo.io return gelocation data
+    Makes a request to the ipinfo.io with token of _author_
+    API of ipinfo.io return gelocation data
 
-:param ip: IP-address 
-:type ip: string
+    :param ip: IP-address 
+    :type ip: string
 
-:return: data of geolocation IP
-:rtype: dict
-    "latitude": 41.01,
-    "accuracy_radius": 100,
-    "metro_code": null,
-    "longitude": 17.0056,
-'''
+    :return: data of geolocation IP
+    :rtype: dict
+    '''
     response = requests.get('%s%s?token=%s' % (URL_IPINFO, ip, TOKEN_IPINFO))
     r = response.json()
     geo = r['loc'].split(',')
@@ -73,19 +76,18 @@ API of ipinfo.io return gelocation data
 
 def full(ip='8.8.8.8'):
     '''
-Collects full information about the ip
+    Collects full information about the ip
 
-:param ip: IP-address 
-:type ip: string
+    :param ip: IP-address 
+    :type ip: string
 
-:return: data about IP(whois + geo)
-:rtype: dict
-'''
+    :return: data about IP(whois + geo)
+    :rtype: dict
+    '''
     res = {}
     res['whois'] = whois(ip)
     res['geo']   = geolocation(ip)
     return json.dumps(res, ensure_ascii=False)
-
 
 def main():
     print('module has been started')
