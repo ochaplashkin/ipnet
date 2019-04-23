@@ -72,8 +72,26 @@
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-1"></div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                         <div class="container-fluid" id="details" >
-                          <table id="blur" class="table">                                                         
-                          </table>
+                        <table id="blur" class="table">                                                  
+                              <tr>                 
+                                <td ><img onclick="copytext('#text1')"  id="save_pic" src="src/save.png"><span class="key"></span><span  id="text1" class="info"></span></td>
+                              </tr> 
+                              <tr> 
+                                <td ><img onclick="copytext('#text2')"   id="save_pic" src="src/save.png"><span class="key"></span><span  id="text2" class="info"></span></td>
+                              </tr>
+                              <tr>  
+                                <td ><img onclick="copytext('#text3')" id="save_pic" src="src/save.png"><span class="key"></span><span  id="text3" class="info"></span></td>
+                              </tr>
+                              <tr>  
+                                <td ><img onclick="copytext('#text4')" id="save_pic" src="src/save.png"><span class="key"></span><span  id="text4" class="info"></span></td>
+                              </tr>
+                                <tr>  
+                                <td ><img onclick="copytext('#text5')" id="save_pic" src="src/save.png"><span class="key"></span><span  id="text5" class="info"></span></td>
+                              </tr>
+                                <tr>  
+                                <td ><img onclick="copytext('#text6')" id="save_pic" src="src/save.png"><span class="key"></span><span  id="text6" class="info"></span></td>
+                              </tr>
+                            </table>
                           <button id="get-data" onclick="rawData()" type="button" class="btn btn-primary" style="width:10%;margin-bottom: 10px;">Raw data</button>
                     </div>
                 </div>
@@ -98,7 +116,7 @@
              startIP.innerHTML += paramValue;
           }
   
- DATA1 = {
+DATA1 = {
   "test":[
        {
         "updatedDate": "2019-04-23",
@@ -115,6 +133,14 @@
         "email": "checkleaft@tik.com",
         "organization": "checkleaft",
         "city": "Cicila"
+        },
+         {
+        "updatedDate": "2019-04-23",
+        "registrarIANAID": "778",
+        "telephone": "18774538353",
+        "email": "ipaddressing@level3.com",
+        "organization": "ipaddressing",
+        "city": "Mountain View"
         }
   ],
     
@@ -140,13 +166,17 @@
 function goMap(){
     n =  Math.random() * (0 + 1) + 1;
     n = Math.floor(n);
-    var num = 1;                            
+    var num = 0;                            
     var body_table = ""
     __after  = '</span></td>';
-    for( i in DATA1.test[n]){
+     for( i in DATA1.test[n]){
+      $("td").eq(num).find(".key").text(i+": ")
+      $("td").eq(num).find(".info").text(DATA1.test[n][i])
+/*
         body_table += '<tr>'
-        body_table += '<td><img onclick="copytext('+'\u0027#text'+num+'\u0027)"  id="save_pic" src="./frontend/src/save.png"><span class="key">' + i + '</span><span  id="text'+ num + '" class="info">: ' + DATA1.test[0][i] + __after;
+        body_table += '<td><img onclick="copytext('+'\u0027#text'+num+'\u0027)"  id="save_pic" src="src/save.png"><span class="key">' + i + ':</span><span  id="text'+ num + '" class="info"> ' + DATA1.test[0][i] + __after;
         body_table += '</tr>'
+*/
         num++;
     }
    $('#blur').append(body_table)
