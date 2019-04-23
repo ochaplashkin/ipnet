@@ -6,9 +6,10 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin=""/>
-  <link rel="stylesheet" href="./frontend/css/sub.css" />
-  <link rel="stylesheet" href="./frontend/boot/bootstrap/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="./frontend/boot/bootstrap/css/blur.css"/>
+   <link rel="stylesheet" href="css/sub.css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="bootstrap/css/blur.css"/>
+  <link rel="stylesheet" href="modulCssStyleUpdate.css" />
 
   <style>
   #map{
@@ -27,13 +28,13 @@
 <body onload="OnLoad()">
 
 <header>
-    <div id="picture"><img src="./frontend/src/ip.svg"><h4 id="heads" >Fast. Simple. Clearly. </h4></div>
+    <div id="picture"><img src="src/ip.svg"><h4 id="heads" >Fast. Simple. Clearly. </h4></div>
 
 	<!--<div id="logos"><p>IP</p></div>
 	<div style="display:inline-block;"><p  id="text" >net</p></div>-->
 </header>
-<!--Ìîäóëüíîå îêíî-->
-  <div id="myModal" class="modal">
+<!--��������� ����-->
+ <div id="myModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
       <h3 ">New IP</h3>
@@ -42,20 +43,20 @@
     <div class="modal-body">
     <input id="ipInfoNext" style="width:100%;"></input>
 <div >
-    <button id="ipInfo">Îê</button>   
+    <button id="ipInfo">��</button>   
     <button class="btnModul" id="Cancel">Cancel</button>  
 </div>
     </div> 
   </div>
 </div>
-<!--Ìîäóëüíîå îêíî-->
+<!--��������� ����-->
 
 	<div class="featurebox col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div  class="row">
                     <div  class="col-lg-2 col-md-3 col-sm-3 col-xs-4">                                             
                           <div id="IP" class="list-group">
                                 <a  href="#" class="list-group-item list-group-item-action disabled">IP addresses</a>                           
-                                <a  href="#ip" id="stratIP" onclick="goMap()" name="0" class="list-group-item list-group-item-action">
+                                <a  href="#ip"  id="stratIP" onclick="goMap()" data="0" name="0" class="list-group-item list-group-item-action">
                                 <span id="cross" onclick="this.parentNode.remove()">&times;</span></a>                                                                 
                           </div>
                               <button   id="add-ip" type="button" class="btn btn-primary">Add</button>
@@ -72,7 +73,7 @@
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-1"></div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                         <div class="container-fluid" id="details" >
-                        <table id="blur" class="table">                                                  
+                             <table id="blur" class="table">                                                  
                               <tr>                 
                                 <td ><img onclick="copytext('#text1')"  id="save_pic" src="src/save.png"><span class="key"></span><span  id="text1" class="info"></span></td>
                               </tr> 
@@ -96,12 +97,9 @@
                     </div>
                 </div>
             </div>
-
-
-
-<script src="./frontend/jquery/dist/jquery.slim.min.js"></script>
-<script src="./frontend/popper/dist/popper.min.js"></script>
-<script src="./frontend/boot/bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery/dist/jquery.slim.min.js"></script>
+<script src="popper/dist/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
    crossorigin=""></script>
@@ -109,111 +107,14 @@
   src="https://code.jquery.com/jquery-3.4.0.min.js"
   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
   crossorigin="anonymous"></script>
-   <script type="text/javascript" crossorigin="anonymous"> 
-            function OnLoad() {
-             var paramValue = window.location.href.split("?")[1].split("=")[1];  
-               var startIP = document.getElementById('stratIP');
-             startIP.innerHTML += paramValue;
-          }
-  
-DATA1 = {
-  "test":[
-       {
-        "updatedDate": "2019-04-23",
-        "registrarIANAID": "778",
-        "telephone": "18774538353",
-        "email": "ipaddressing@level3.com",
-        "organization": "ipaddressing",
-        "city": "Mountain View"
-        },
-             {
-        "updatedDate": "2019-04-23",
-        "registrarIANAID": "445",
-        "telephone": "8839210101",
-        "email": "checkleaft@tik.com",
-        "organization": "checkleaft",
-        "city": "Cicila"
-        },
-         {
-        "updatedDate": "2019-04-23",
-        "registrarIANAID": "778",
-        "telephone": "18774538353",
-        "email": "ipaddressing@level3.com",
-        "organization": "ipaddressing",
-        "city": "Mountain View"
-        }
-  ],
-    
- } 
+   <script type="text/javascript" src="js/workPageAnServer.js"> 
 
-
-   
-    ///////////////
-    function rawData(el){
-            $.ajaxSetup({
-                headers:{'Access-Control-Allow-Origin': 'Origin, Content-Type, X-Auth-Token'}
-          });
-
-          $.get('https://oleg.root.sx/', function(data, status){
-                alert("Data: " + data + "\nStatus: " + status);
-          });
-    };
-    /////////////////
-  //Çäåñü èäåò äîáàâëåíèå òî÷êè íà êàðòó è îáíîâëåíèå Details
-  //ß íå ðàçîáðàëñÿ êàê îáíîâëÿòü ñëîè íà êàðòå, ÷òîáû ïðè íàæàòèå íà äðóãîé àäðåñ îòîáðàæàëîñü äðóãîå ìåñòî êàðòû
-  //Details òîæå îáíîâëÿåòñÿ ñ êîñÿêîì, òîáèøü íîâàÿ òàáëèöà ïîâåðõ ñòàðîé äîáàâëÿåòñÿ, ÿ ýòî íà ïîñëåäîê çàêèíóë èáî óæå 3 íî÷è
-  //Â data1 õðàíÿòñÿ ïñåâäî äàííûå äëÿ details , èõ ìîæíî óâåëè÷èòü , íî êîñÿê ñ îáíîâëåíèåì ÿ õ3
-function goMap(){
-    n =  Math.random() * (0 + 2) + 1;
-    n = Math.floor(n);
-    var num = 0;                            
-    var body_table = ""
-    __after  = '</span></td>';
-     for( i in DATA1.test[n]){
-      $("td").eq(num).find(".key").text(i+": ")
-      $("td").eq(num).find(".info").text(DATA1.test[n][i])
-/*
-        body_table += '<tr>'
-        body_table += '<td><img onclick="copytext('+'\u0027#text'+num+'\u0027)"  id="save_pic" src="src/save.png"><span class="key">' + i + ':</span><span  id="text'+ num + '" class="info"> ' + DATA1.test[0][i] + __after;
-        body_table += '</tr>'
-*/
-        num++;
-    }
-   $('#blur').append(body_table)
-    locx =  Math.random() * (0 + 6) + 1;
-    locx = Math.floor(locx);
-
-    //locy =  Math.random() * (0 - 55) + 0;
-    var latlngs = [
-     [45.51, -122.68],
-     [37.77, -122.43],
-     [34.04, -118.2],
-     [40.78, -73.91],
-     [41.83, -87.62],
-     [32.76, -96.72]
-];
-   findDot(latlngs[event.target.name][0],latlngs[event.target.name][1]);
-
-
- 
-
-
-
-}
-    function findDot(x,y){
-   
-      map = L.map('mapid').setView([x, y], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map); 
-    L.marker([x, y]).addTo(map).bindPopup( "Coordinates: "+x+" "+y)
-    
-   
-    }
    </script>
-   <script type="text/javascript" src="./frontend/js/sub_index_testdate.js"> </script>
-    <script type="text/javascript" src="./frontend/js/sub_index_modal.js"> </script>
-<script src ="./frontend/js/ipmask1.js"></script> 
+   <script type="text/javascript" src="js/testdate.js"> </script>
+    <script type="text/javascript" src="js/modalWindow.js"> </script>
+    <script src ="../frontend/js/ipmask1.js">
+  </script> 
+
 </body>
 
 
