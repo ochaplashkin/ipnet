@@ -6,8 +6,8 @@ function copytext(el) {
   document.execCommand("copy"); 
   $tmp.remove(); 
 
-  $("td #save_pic").attr('src', 'src/saveId.svg');
-   setTimeout(function(){ $("td #save_pic").attr('src', 'src/save.png');}, 500);
+  $("td #save_pic").attr('src', 'frontend/src/saveId.svg');
+   setTimeout(function(){ $("td #save_pic").attr('src', 'frontend/src/save.png');}, 500);
 
 }
 
