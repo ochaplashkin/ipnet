@@ -42,7 +42,7 @@
     <div class="modal-body">
     <input id="ipInfoNext" style="width:100%;"></input>
 <div >
-    <button id="ipInfo">Îê</button>   
+    <button id="ipInfo">Ok</button>   
     <button class="btnModul" id="Cancel">Cancel</button>  
 </div>
     </div> 
@@ -95,7 +95,7 @@
             function OnLoad() {
              var paramValue = window.location.href.split("?")[1].split("=")[1];  
                var startIP = document.getElementById('stratIP');
-             startIP.innerHTML = paramValue;
+             startIP.innerHTML += paramValue;
           }
   
  DATA1 = {
