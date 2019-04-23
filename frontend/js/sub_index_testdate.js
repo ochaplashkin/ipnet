@@ -147,7 +147,7 @@ function copytext(el) {
         validString = address.value;
       if(validString.length >= 7){
       
-    document.location = "sub_index.html?id=" + validString;
+    document.location = "./sub_index.html?id=" + validString;
     //document.location.replace("sub-index/sub_index.html");
       }
       $('#example').tooltip("show")
