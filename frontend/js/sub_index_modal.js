@@ -1,27 +1,36 @@
 
 
 
+var M = 0;
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("add-ip");
 var span = document.getElementsByClassName("close")[0];
 var cancel = document.getElementById("Cancel");
 
-//Нажатие на кнопку Add и вызов модульного окна
+//ГЌГ Г¦Г ГІГЁГҐ Г­Г  ГЄГ­Г®ГЇГЄГі Add ГЁ ГўГ»Г§Г®Гў Г¬Г®Г¤ГіГ«ГјГ­Г®ГЈГ® Г®ГЄГ­Г 
 btn.onclick = function() {
     modal.style.display = "block";
 	var ipInfo = document.getElementById('ipInfo');
 
-	//Модульнок окно: Нажатие на кнопку Ок -> добавление новой строки в блок "ip addresses" 
+	//ГЊГ®Г¤ГіГ«ГјГ­Г®ГЄ Г®ГЄГ­Г®: ГЌГ Г¦Г ГІГЁГҐ Г­Г  ГЄГ­Г®ГЇГЄГі ГЋГЄ -> Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г­Г®ГўГ®Г© Г±ГІГ°Г®ГЄГЁ Гў ГЎГ«Г®ГЄ "ip addresses" 
 	ipInfo.onclick = function() {
-	  ipInfoNext = document.getElementById('ipInfoNext');	  
-      var new_element = '<a  href="#" onclick="goMap()" class="list-group-item list-group-item-action">'+ipInfoNext.value+' <span  id="cross" onclick="this.parentNode.remove()">&times;</span>'+'</a>'
+     if(ipInfoNext.value.length > 6) { 
+        M++;
+	  ipInfoNext = document.getElementById('ipInfoNext');
+    //alert(M)	  
+      var new_element = '<a  href="#" onclick="goMap()" name="'+M+'" class="list-group-item list-group-item-action">'+ipInfoNext.value+' <span  id="cross" onclick="this.parentNode.remove()">&times;</span>'+'</a>'
       $('.list-group').append(new_element);
       ipInfoNext.value = "";
        modal.style.display = "none";
-       /*TO DO:: 1)Доделать валидацию (корректный ввод)
-       			 2)Обрабокта пустого ввода
-       			 3)Добавить кнопку "Cancel"
+     }else{
+      alert("error")
+
+    }
+       /*TO DO:: 1)Г„Г®Г¤ГҐГ«Г ГІГј ГўГ Г«ГЁГ¤Г Г¶ГЁГѕ (ГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© ГўГўГ®Г¤)
+       			 2)ГЋГЎГ°Г ГЎГ®ГЄГІГ  ГЇГіГ±ГІГ®ГЈГ® ГўГўГ®Г¤Г 
+       			 3)Г„Г®ГЎГ ГўГЁГІГј ГЄГ­Г®ГЇГЄГі "Cancel"
        			 	 */ 
+     
   }
   }
 
@@ -40,8 +49,6 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-
 
 
 
