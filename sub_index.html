@@ -6,10 +6,9 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin=""/>
-   <link rel="stylesheet" href="css/sub.css" />
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="bootstrap/css/blur.css"/>
-  <link rel="stylesheet" href="sub.css" />
+  <link rel="stylesheet" href="frontend/css/sub.css" />
+  <link rel="stylesheet" href="frontend/boot/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="frontend/boot/bootstrap/css/blur.css"/>
 
   <style>
   #map{
@@ -28,12 +27,12 @@
 <body onload="OnLoad()">
 
 <header>
-    <div id="picture"><img src="src/ip.svg"><h4 id="heads" >Fast. Simple. Clearly. </h4></div>
+    <div id="picture"><img src="frontend/src/ip.svg"><h4 id="heads" >Fast. Simple. Clearly. </h4></div>
 
 	<!--<div id="logos"><p>IP</p></div>
 	<div style="display:inline-block;"><p  id="text" >net</p></div>-->
 </header>
-<!--Модульное окно-->
+<!--ГЊГ®Г¤ГіГ«ГјГ­Г®ГҐ Г®ГЄГ­Г®-->
  <div id="myModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -43,13 +42,13 @@
     <div class="modal-body">
     <input id="ipInfoNext" style="width:100%;"></input>
 <div >
-    <button id="ipInfo">Ок</button>   
+    <button id="ipInfo">ГЋГЄ</button>   
     <button class="btnModul" id="Cancel">Cancel</button>  
 </div>
     </div> 
   </div>
 </div>
-<!--Модульное окно-->
+<!--ГЊГ®Г¤ГіГ«ГјГ­Г®ГҐ Г®ГЄГ­Г®-->
 
 	<div class="featurebox col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div  class="row">
@@ -82,9 +81,9 @@
 
 
 
-<script src="jquery/dist/jquery.slim.min.js"></script>
-<script src="popper/dist/popper.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="frontend/jquery/dist/jquery.slim.min.js"></script>
+<script src="frontend/popper/dist/popper.min.js"></script>
+<script src="frontend/boot/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
    crossorigin=""></script>
@@ -134,10 +133,10 @@
           });
     };
     /////////////////
-  //Здесь идет добавление точки на карту и обновление Details
-  //Я не разобрался как обновлять слои на карте, чтобы при нажатие на другой адрес отображалось другое место карты
-  //Details тоже обновляется с косяком, тобишь новая таблица поверх старой добавляется, я это на последок закинул ибо уже 3 ночи
-  //В data1 хранятся псевдо данные для details , их можно увеличить , но косяк с обновлением я х3
+  //Г‡Г¤ГҐГ±Гј ГЁГ¤ГҐГІ Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГІГ®Г·ГЄГЁ Г­Г  ГЄГ Г°ГІГі ГЁ Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ Details
+  //Гџ Г­ГҐ Г°Г Г§Г®ГЎГ°Г Г«Г±Гї ГЄГ ГЄ Г®ГЎГ­Г®ГўГ«ГїГІГј Г±Г«Г®ГЁ Г­Г  ГЄГ Г°ГІГҐ, Г·ГІГ®ГЎГ» ГЇГ°ГЁ Г­Г Г¦Г ГІГЁГҐ Г­Г  Г¤Г°ГіГЈГ®Г© Г Г¤Г°ГҐГ± Г®ГІГ®ГЎГ°Г Г¦Г Г«Г®Г±Гј Г¤Г°ГіГЈГ®ГҐ Г¬ГҐГ±ГІГ® ГЄГ Г°ГІГ»
+  //Details ГІГ®Г¦ГҐ Г®ГЎГ­Г®ГўГ«ГїГҐГІГ±Гї Г± ГЄГ®Г±ГїГЄГ®Г¬, ГІГ®ГЎГЁГёГј Г­Г®ГўГ Гї ГІГ ГЎГ«ГЁГ¶Г  ГЇГ®ГўГҐГ°Гµ Г±ГІГ Г°Г®Г© Г¤Г®ГЎГ ГўГ«ГїГҐГІГ±Гї, Гї ГЅГІГ® Г­Г  ГЇГ®Г±Г«ГҐГ¤Г®ГЄ Г§Г ГЄГЁГ­ГіГ« ГЁГЎГ® ГіГ¦ГҐ 3 Г­Г®Г·ГЁ
+  //Г‚ data1 ГµГ°Г Г­ГїГІГ±Гї ГЇГ±ГҐГўГ¤Г® Г¤Г Г­Г­Г»ГҐ Г¤Г«Гї details , ГЁГµ Г¬Г®Г¦Г­Г® ГіГўГҐГ«ГЁГ·ГЁГІГј , Г­Г® ГЄГ®Г±ГїГЄ Г± Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐГ¬ Гї Гµ3
 function goMap(){
     n =  Math.random() * (0 + 1) + 1;
     n = Math.floor(n);
@@ -182,8 +181,8 @@ function goMap(){
    
     }
    </script>
-   <script type="text/javascript" src="js/testdate.js"> </script>
-    <script type="text/javascript" src="js/modalWindow.js"> </script>
+   <script type="text/javascript" src="frontend/js/sub_index_testdate.js"> </script>
+    <script type="text/javascript" src="frontend/js/sub_index_modal.js"> </script>
 
 </body>
 
