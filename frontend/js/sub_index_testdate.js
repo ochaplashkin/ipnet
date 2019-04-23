@@ -123,7 +123,7 @@ $("td").eq(16).find(".info").text(date1.WhoisRecord.domainName)
 
 */
 
-//document.getElementBóId("save_pic").on(copytext("#text1"));
+//document.getElementBÃ³Id("save_pic").on(copytext("#text1"));
 
 
 
@@ -139,7 +139,7 @@ function copytext(el) {
 
 }
 
-  //Ïðîâåðêà ââåäåííûõ äàííûõ
+  //ÃÃ°Ã®Ã¢Ã¥Ã°ÃªÃ  Ã¢Ã¢Ã¥Ã¤Ã¥Ã­Ã­Ã»Ãµ Ã¤Ã Ã­Ã­Ã»Ãµ
      
   address =document.getElementById('example');
   letsGo =document.getElementById('test');
@@ -147,7 +147,7 @@ function copytext(el) {
         validString = address.value;
       if(validString.length >= 7){
       
-    document.location = "sub-index/sub_index.html?id=" + validString;
+    document.location = "sub_index.html?id=" + validString;
     //document.location.replace("sub-index/sub_index.html");
       }
       $('#example').tooltip("show")
