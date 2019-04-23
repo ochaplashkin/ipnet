@@ -55,7 +55,7 @@
                     <div  class="col-lg-2 col-md-3 col-sm-3 col-xs-4">                                             
                           <div id="IP" class="list-group">
                                 <a  href="#" class="list-group-item list-group-item-action disabled">IP addresses</a>                           
-                                <a  href="#ip" id="stratIP" onclick="goMap()" title="0" class="list-group-item list-group-item-action">test
+                                <a  href="#ip" id="stratIP" onclick="goMap()" title="0" class="list-group-item list-group-item-action">
                                 <span id="cross" onclick="this.parentNode.remove()">&times;</span></a>                                                                 
                           </div>
                               <button   id="add-ip" type="button" class="btn btn-primary">Add</button>
@@ -145,7 +145,7 @@ function goMap(){
     __after  = '</span></td>';
     for( i in DATA1.test[n]){
         body_table += '<tr>'
-        body_table += '<td><img onclick="copytext('+'\u0027#text'+num+'\u0027)"  id="save_pic" src="src/save.png"><span class="key">' + i + '</span><span  id="text'+ num + '" class="info">: ' + DATA1.test[0][i] + __after;
+        body_table += '<td><img onclick="copytext('+'\u0027#text'+num+'\u0027)"  id="save_pic" src="./frontend/src/save.png"><span class="key">' + i + '</span><span  id="text'+ num + '" class="info">: ' + DATA1.test[0][i] + __after;
         body_table += '</tr>'
         num++;
     }
