@@ -4,7 +4,6 @@ var loca = 0;
 function getDataFromServer(ip){                          
   $.get("https://geo.ipify.org/api/v1?apiKey=at_Ubss3XljtrSkzxc7AQEqTZQmJgRzY&ipAddress="+ip,function(data,status){
      loca = data;
-     alert(loca)
       })
   }
   //LoadPage + info 1Page
