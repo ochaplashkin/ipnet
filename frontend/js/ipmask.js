@@ -1,10 +1,6 @@
     $( document ).ready(function() {
         $('#example').ipmask();
     });
-
-   $( document ).ready(function() {
-        $('#ipInfoNext').ipmask();
-    });
 $.fn.setCursorPosition = function(pos) {
     this.each(function(index, elem) {
         if (elem.setSelectionRange) {
