@@ -1,17 +1,19 @@
 
 var loca = 0;
+var ipMain = 0;
 //getJson
-function getDataFromServer(ip){                          
+async function getDataFromServer(ip){                          
   $.get("https://geo.ipify.org/api/v1?apiKey=at_Ubss3XljtrSkzxc7AQEqTZQmJgRzY&ipAddress="+ip,function(data,status){
      loca = data;
+     findDot(loca.location.lat,loca.location.lng);
       })
+    
   }
   //LoadPage + info 1Page
  function OnLoad() {
   var paramValue = window.location.href.split("?")[1].split("=")[1];  
-  var startIP = document.getElementById('stratIP');
-  startIP.innerHTML += paramValue;
-  getDataFromServer(paramValue)          
+   var new_element = '<a  href="#" onclick="goMap()" name="'+0+'" class="list-group-item list-group-item-action">'+paramValue+' <span  id="cross" onclick="this.parentNode.remove()">&times;</span>'+'</a>'
+    $('.list-group').append(new_element);     
  }
 
 //Map
@@ -23,6 +25,7 @@ function getDataFromServer(ip){
 //GoMap :)))
 num = 0;
 function goMap(btn){
+   getDataFromServer(event.originalTarget.lastChild.previousSibling.data)  
     for( i in loca.location){
 
       $("td").eq(num).find(".key").text(i+": ")
@@ -30,7 +33,7 @@ function goMap(btn){
         num++;
     }
   //Dot for map   
-  findDot(loca.location.lat,loca.location.lng);
+
 }
     function findDot(x,y){  
       map.setView([x, y], 13);
