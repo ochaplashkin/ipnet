@@ -20,7 +20,7 @@ btn.onclick = function() {
     //alert(M)	  
       var new_element = '<a  href="#" onclick="goMap()" name="'+M+'" class="list-group-item list-group-item-action">'+ipInfoNext.value+' <span  id="cross" onclick="this.parentNode.remove()">&times;</span>'+'</a>'
       $('.list-group').append(new_element);
-       getDataFromServer(ipInfoNext.value) ;
+   
       ipInfoNext.value = "";
        modal.style.display = "none";
      }else{
